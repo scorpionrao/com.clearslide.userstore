@@ -308,7 +308,7 @@ public class ClearslideUserStoreManager extends AbstractUserStoreManager {
     public boolean isReadOnly() throws UserStoreException {
         log.info("isReadOnly method called");
 
-        return false;
+        return Boolean.parseBoolean(realmConfig.getUserStoreProperty(ClearSlideUserStoreManagerConstants.READ_ONLY_PROPERTY_NAME));
     }
 
 

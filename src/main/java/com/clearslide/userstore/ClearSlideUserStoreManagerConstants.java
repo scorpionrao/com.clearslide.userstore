@@ -12,6 +12,7 @@ public class ClearSlideUserStoreManagerConstants {
     public static final ArrayList<Property> CUSTOM_UM_ADVANCED_PROPERTIES = new ArrayList<Property>();
 
     public static final String SERVICE_URL_PROPERTY_NAME = "ServiceURL";
+    public static final String READ_ONLY_PROPERTY_NAME = "ReadOnly";
 
 
     private static void setProperty(String name, String displayName, String value, String description) {
@@ -39,6 +40,6 @@ public class ClearSlideUserStoreManagerConstants {
         //adding optional properties
         setProperty("Disabled", "Disable Userstore",  "false", "Whether user store is disabled");
         setProperty("SCIMEnabled", "Enable SCIM",  "true", "Whether SCIM is enabled for the user store");
-        setProperty("ReadOnly", "Read Only",  "false", "Indicates whether the user store is in read only mode or not");
+        setProperty(READ_ONLY_PROPERTY_NAME, "Read Only",  "false", "Indicates whether the user store is in read only mode or not");
     }
 }
