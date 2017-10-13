@@ -27,8 +27,10 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class ClearslideUserStoreManager extends AbstractUserStoreManager {
 
@@ -242,7 +244,7 @@ public class ClearslideUserStoreManager extends AbstractUserStoreManager {
         log.info("doCheckExistingUser method called for userName: "+ userName);
 
         //hard coding for testing purpose
-        if("tharindu".equals(userName)){
+        if("tharindue@clearslide.com".equals(userName)){
             return true;
         }
         return false;
@@ -271,7 +273,7 @@ public class ClearslideUserStoreManager extends AbstractUserStoreManager {
         }
 
 
-        String matchingUserName = "tharindu"; //hard coded for testing purpose
+        String matchingUserName = "tharindue@clearslide.com"; //hard coded for testing purpose
         //add the username to the array
 
         String [] userNameArray = new String []{matchingUserName};
@@ -320,11 +322,29 @@ public class ClearslideUserStoreManager extends AbstractUserStoreManager {
     }
 
     @Override
-    protected Map<String, String> getUserPropertyValues(String s, String[] strings, String s1) throws UserStoreException {
+    protected Map<String, String> getUserPropertyValues(String userName, String[] propertyNames, String profileName) throws UserStoreException {
 
-        log.info("getUserPropertyValues method called");
+        log.info("getUserPropertyValues method called for user: " + userName + " with profile name: " + profileName);
+        log.info("property Names : ");
+        for(String property : propertyNames){
+            log.info(property);
+        }
+
+        //createdDate, lastModifiedDate, scimId
 
         Map<String, String> propertyValues = new HashMap<>();
+
+        // date should be yyyy-MM-dd'T'HH:mm:ss format
+
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        //sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+        propertyValues.put("createdDate", "2017-09-29T18:46:19-0700");
+        propertyValues.put("lastModifiedDate", "2017-09-29T18:46:19-0700");
+
+        //Set the ClearSlide User ID here
+        propertyValues.put("scimId", "79434348938434");
+
         return propertyValues;
     }
 
